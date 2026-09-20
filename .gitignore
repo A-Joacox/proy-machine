@@ -1,0 +1,11 @@
+# entorno
+.venv/
+__pycache__/
+*.pyc
+
+# datos pesados (se descargan con el notebook)
+data/*.parquet
+
+# jupyter / sistema
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,17 @@
+[
+  {
+    "modelo": "Baseline A: mediana global",
+    "MAE": 7.404093195706129,
+    "RMSLE": 0.6183722024904774
+  },
+  {
+    "modelo": "Baseline B: mediana por (zona, hora)",
+    "MAE": 6.382967439960031,
+    "RMSLE": 0.5520551129104777
+  },
+  {
+    "modelo": "Baseline C: regresi\u00f3n lineal",
+    "MAE": 6.078757574424198,
+    "RMSLE": 0.534316952147514
+  }
+]
