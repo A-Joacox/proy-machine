@@ -4,9 +4,10 @@
 Predicción de la duración de viajes de taxis amarillos en Nueva York usando información disponible al momento del recojo.
 
 ## 2. Integrantes
-- [Nombre 1]
-- [Nombre 2]
-- [Nombre 3]
+- Diego Alarcon
+- Joaquin Mercado
+- Joaquin Justo
+- Randy Rojas
 
 ## 3. Dataset elegido
 **NYC Yellow Taxi Trip Records** — NYC Taxi & Limousine Commission (TLC).
