@@ -13,11 +13,11 @@ Predicción de la duración de viajes de taxis amarillos en Nueva York usando in
 **NYC Yellow Taxi Trip Records** — NYC Taxi & Limousine Commission (TLC).
 URL: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
-Usamos los registros de taxis amarillos de **enero a junio de 2025** (6 meses), descargados directamente de la TLC en formato Parquet. Cada mes contiene aproximadamente 3 millones de viajes, por lo que el volumen total supera los 18 millones de filas. **Licencia y acceso:** datos abiertos publicados por la TLC bajo los términos de NYC Open Data (uso libre, sin registro ni credenciales). La descarga es directa por URL, lo que permite reproducir el proyecto desde cero.
+Usamos los registros de taxis amarillos de **enero a junio de 2025** (6 meses), descargados directamente de la TLC en formato Parquet. Cada mes contiene aproximadamente 3 millones de viajes, por lo que el volumen total supera los 18 millones de filas. **Licencia y acceso:** datos abiertos publicados por la TLC bajo los términos de NYC Open Data.
 
 El dataset es de fuente oficial verificable y presenta problemas reales: outliers extremos, valores faltantes, registros corruptos (duraciones negativas, distancias de 0), deriva temporal y riesgo de leakage.
 
-Para la exploración inicial trabajamos con un mes completo (enero 2025); para el modelado final usaremos los 6 meses con muestreo estratificado si el volumen excede la capacidad de cómputo disponible.
+Para la exploración inicial trabajamos con un mes completo, este siendo enero del 2025; para el modelado final usaremos los 6 meses con muestreo estratificado si el volumen excede la capacidad de cómputo disponible.
 
 ## 4. Pregunta predictiva
 ¿Cuántos minutos durará un viaje en taxi, dado lo que se sabe **en el momento en que el pasajero sube al vehículo**?
@@ -55,7 +55,7 @@ Este dataset tiene leakage evidente si se usa sin criterio. Las siguientes colum
 | `congestion_surcharge`, `cbd_congestion_fee`, `improvement_surcharge`, `Airport_fee` | Recargos calculados al cerrar el viaje según el recorrido efectivo |
 | `store_and_fwd_flag` | Indica si el registro se guardó offline; se fija al terminar el viaje |
 
-En lugar de `trip_distance`, construimos una distancia estimada (haversine entre centroides de zonas TLC), que sí estaría disponible al momento del recojo.
+En lugar de `trip_distance`, construimos una distancia estimada (haversine entre centroides de las 265 zonas TLC), que sí estaría disponible al momento del recojo.
 
 **Medidas de control:**
 - Lista blanca explícita de features (sección 7); toda columna fuera de esa lista se descarta en `src/features.py`, no se excluye "a mano" en cada notebook.
@@ -93,6 +93,7 @@ Todo modelo posterior (árboles, gradient boosting) debe justificar su complejid
 - **Deriva temporal**: patrones de tráfico cambian entre meses; el split temporal lo expone honestamente.
 - **Sesgos**: el dataset solo cubre taxis amarillos (predominantes en Manhattan y aeropuertos); las conclusiones no generalizan a toda la movilidad de NYC ni a zonas periféricas, donde el servicio y los datos son más escasos.
 - **Alta cardinalidad**: 265 zonas TLC; codificarlas mal (one-hot completo) explota la dimensionalidad; evaluaremos target encoding con cuidado de hacerlo dentro del pipeline para no filtrar información.
+- **Random Forest sin límite de profundidad**: con `max_depth=None` y muchos árboles sobre 18M+ filas, cada árbol completo se guarda en memoria y puede superar la RAM disponible; mitigación: acotar `max_depth`/`max_samples`, o usar `HistGradientBoostingRegressor`.
 
 ## 13. Plan de trabajo — semanas restantes
 | Semana | Actividad |
