@@ -1,8 +1,17 @@
-# Predicción de la duración de viajes en taxi — NYC Yellow Taxi
+# Predicción de la duración de viajes en taxi - NYC Yellow Taxi
 
 Proyecto final del curso de Machine Learning. Predicción de la duración de un viaje en taxi amarillo de NYC usando únicamente información disponible al momento del recojo.
 
 Ver [`proposal.md`](proposal.md) para la formulación completa del problema.
+
+**Grupo**: 5
+
+**Integrantes**
+
+- Joaquin Mercado
+- Joaquin Justo
+- Diego Alarcon
+- Randy Rojas
 
 ## Reproducir la exploración inicial
 
@@ -47,4 +56,4 @@ proy-machine/
 NYC Taxi & Limousine Commission — Trip Record Data
 https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
-Datos públicos, formato Parquet, periodo usado: enero–junio 2025.
+Datos públicos, formato Parquet, periodo usado: enero-junio 2025.
