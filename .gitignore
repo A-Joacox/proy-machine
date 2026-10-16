@@ -5,6 +5,7 @@ __pycache__/
 
 # datos pesados (se descargan con el notebook)
 data/*.parquet
+data/processed/
 
 # jupyter / sistema
 .ipynb_checkpoints/
