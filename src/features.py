@@ -92,7 +92,7 @@ class ExtractorFeaturesNYC(BaseEstimator, TransformerMixin):
 
         # 2. Aprender distancia estimada sin leakage (solo con datos de Train)
         if "trip_distance" in X.columns:
-             pares = (
+            pares = (
                 X.groupby(["PULocationID", "DOLocationID"])["trip_distance"]
                 .median()
                 .to_dict()
