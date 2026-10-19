@@ -1,0 +1,47 @@
+[
+  {
+    "modelo": "A: Mediana global",
+    "MAE": 9.283538818359375,
+    "RMSLE": 0.6649776884150769
+  },
+  {
+    "modelo": "B: Mediana por (zona, hora)",
+    "MAE": 7.858683656242667,
+    "RMSLE": 0.5803540745910813
+  },
+  {
+    "modelo": "C: Regresi\u00f3n lineal (sin regularizar)",
+    "MAE": 5.1439416173199275,
+    "RMSLE": 0.38865118427130885
+  },
+  {
+    "modelo": "D: Ridge (regularizada, alpha=1.0)",
+    "MAE": 5.143940448499207,
+    "RMSLE": 0.38865008669292656
+  },
+  {
+    "modelo": "E: Lasso (regularizada, alpha=0.01)",
+    "MAE": 5.14475028445036,
+    "RMSLE": 0.38701157119285406
+  },
+  {
+    "modelo": "Ridge alpha=0.1",
+    "MAE": 5.143941497183969,
+    "RMSLE": 0.3886510738864038
+  },
+  {
+    "modelo": "Ridge alpha=1.0",
+    "MAE": 5.143940448499207,
+    "RMSLE": 0.38865008669292656
+  },
+  {
+    "modelo": "Ridge alpha=10.0",
+    "MAE": 5.143931917195753,
+    "RMSLE": 0.38864071655508836
+  },
+  {
+    "modelo": "Ridge alpha=50.0",
+    "MAE": 5.143946276827745,
+    "RMSLE": 0.38860343564303285
+  }
+]

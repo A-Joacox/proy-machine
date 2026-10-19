@@ -253,7 +253,7 @@ def construir_preprocesador(escalar_numericas: bool = True) -> Pipeline:
     return pipeline_features
 
 
-def preparar_xy(df: pd.DataFrame, target_col: str = "duration_min", usar_log_target: bool = False):
+def preparar_xy(df: pd.DataFrame, target_col: str = "trip_duration_min", usar_log_target: bool = False):
     """
     Separa el DataFrame limpio en matriz de entrada X y vector objetivo y.
     Conserva `trip_distance` dentro de X unicamente para que `ExtractorFeaturesNYC.fit()`
