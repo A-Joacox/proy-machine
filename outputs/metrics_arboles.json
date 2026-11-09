@@ -1,0 +1,20 @@
+[
+  {
+    "modelo": "F: Random Forest",
+    "MAE": 4.396555824516034,
+    "RMSLE": 0.33679069910290244,
+    "segundos_entrenamiento": 16.3
+  },
+  {
+    "modelo": "G: HistGradientBoosting",
+    "MAE": 4.12605338576859,
+    "RMSLE": 0.3232548608546532,
+    "segundos_entrenamiento": 62.9
+  },
+  {
+    "modelo": "H: LightGBM",
+    "MAE": 4.072226510462416,
+    "RMSLE": 0.32056344299587963,
+    "segundos_entrenamiento": 20.6
+  }
+]
