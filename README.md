@@ -44,7 +44,9 @@ proy-machine/
 ├── requirements.txt
 ├── data/                  # parquet descargado (no versionado) + Taxi_Zone_Lookup.csv
 ├── notebooks/
-│   └── 01_exploracion_inicial.ipynb
+│   ├── 01_exploracion_inicial.ipynb
+│   ├── 02_baselines_6meses.ipynb   # baselines + Ridge/Lasso -> outputs/metrics_6meses.json
+│   └── 03_modelos_arboles.ipynb    # Random Forest, HistGB, LightGBM -> outputs/metrics_arboles.json
 ├── src/                   # funciones reutilizables (se poblará en semanas 8+)
 ├── reports/
 │   └── figures/
