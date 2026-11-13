@@ -46,8 +46,13 @@ proy-machine/
 ├── notebooks/
 │   ├── 01_exploracion_inicial.ipynb
 │   ├── 02_baselines_6meses.ipynb   # baselines + Ridge/Lasso -> outputs/metrics_6meses.json
-│   └── 03_modelos_arboles.ipynb    # Random Forest, HistGB, LightGBM -> outputs/metrics_arboles.json
-├── src/                   # funciones reutilizables (se poblará en semanas 8+)
+│   ├── 03_modelos_arboles.ipynb    # Random Forest, HistGB, LightGBM -> outputs/metrics_arboles.json
+│   └── 04_busqueda_hiperparametros.ipynb  # búsqueda con TimeSeriesSplit -> outputs/metrics_tuning.json,
+│                                          #   outputs/mejores_hiperparametros.json (tarda ~50 min)
+├── src/
+│   ├── data.py            # descarga, limpieza y split temporal
+│   ├── features.py        # features y preprocesador sin leakage
+│   └── tuning.py          # validación cruzada temporal y búsqueda aleatoria para LightGBM
 ├── reports/
 │   └── figures/
 └── outputs/

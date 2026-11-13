@@ -1,0 +1,29 @@
+{
+  "modelo": "LightGBM",
+  "params": {
+    "objective": "regression_l1",
+    "learning_rate": 0.05,
+    "num_leaves": 281,
+    "min_child_samples": 30,
+    "subsample": 0.78,
+    "colsample_bytree": 0.685,
+    "reg_alpha": 5.094,
+    "reg_lambda": 0.3762
+  },
+  "n_estimators": 1219,
+  "params_fijos": {
+    "subsample_freq": 1,
+    "n_jobs": -1,
+    "random_state": 42,
+    "verbose": -1
+  },
+  "target": "log1p(trip_duration_min)",
+  "features_excluidas": [],
+  "cv_MAE": 3.4488374092250154,
+  "cv_RMSLE": 0.308963378641033,
+  "val_mayo": {
+    "MAE": 4.015426074528201,
+    "RMSLE": 0.3183242511486343
+  },
+  "validacion": "TimeSeriesSplit(n_splits=3) sobre enero-abril, SAMPLE_FRAC=0.20, SEED=42"
+}

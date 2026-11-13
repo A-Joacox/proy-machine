@@ -1,0 +1,23 @@
+[
+  {
+    "modelo": "H: LightGBM (semana 10)",
+    "MAE": 4.072226510462427,
+    "RMSLE": 0.32056344299588063,
+    "arboles": 500,
+    "segundos_entrenamiento": 27.0
+  },
+  {
+    "modelo": "I: LightGBM ajustado, objetivo L2",
+    "MAE": 4.053586491445964,
+    "RMSLE": 0.31985187795481385,
+    "arboles": 218,
+    "segundos_entrenamiento": 21.4
+  },
+  {
+    "modelo": "J: LightGBM ajustado (configuración elegida)",
+    "MAE": 4.015426074528201,
+    "RMSLE": 0.3183242511486343,
+    "arboles": 1219,
+    "segundos_entrenamiento": 147.9
+  }
+]
