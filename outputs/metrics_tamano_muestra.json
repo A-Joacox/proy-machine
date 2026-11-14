@@ -1,0 +1,79 @@
+{
+  "curva": [
+    {
+      "frac": 0.1,
+      "seed": 42,
+      "filas_train": 1436221,
+      "segundos": 53.7,
+      "MAE_400": 4.160711187887585,
+      "MAE_800": 4.138126930902296,
+      "MAE_1219": 4.12820245943129,
+      "RMSLE": 0.3258262681681097
+    },
+    {
+      "frac": 0.2,
+      "seed": 42,
+      "filas_train": 2872441,
+      "segundos": 92.8,
+      "MAE_400": 4.060441475606676,
+      "MAE_800": 4.028877914559503,
+      "MAE_1219": 4.015426074528201,
+      "RMSLE": 0.3183242511486343
+    },
+    {
+      "frac": 0.2,
+      "seed": 7,
+      "filas_train": 2872441,
+      "segundos": 91.5,
+      "MAE_400": 4.064323024665426,
+      "MAE_800": 4.031135413935607,
+      "MAE_1219": 4.018209424896941,
+      "RMSLE": 0.31827596313031464
+    },
+    {
+      "frac": 0.5,
+      "seed": 42,
+      "filas_train": 7181104,
+      "segundos": 220.0,
+      "MAE_400": 3.9848416602071515,
+      "MAE_800": 3.9442638349404113,
+      "MAE_1219": 3.9281089428535694,
+      "RMSLE": 0.31296434987862454
+    }
+  ],
+  "chequeo_hgb": [
+    {
+      "modelo": "J: LightGBM (notebook 04)",
+      "MAE": 4.015426074528201,
+      "RMSLE": 0.3183242511486343,
+      "segundos": 92.8
+    },
+    {
+      "modelo": "HistGradientBoosting, configuración de J",
+      "MAE": 4.031650832941317,
+      "RMSLE": 0.3190569537717823,
+      "segundos": 275.8
+    }
+  ],
+  "comparacion_mayo": [
+    {
+      "modelo": "J: LightGBM ajustado, 20 % (notebook 04)",
+      "MAE": 4.015426074528201,
+      "RMSLE": 0.3183242511486343,
+      "arboles": 1219
+    },
+    {
+      "modelo": "J con 50 %, mismos árboles",
+      "MAE": 3.9281089428535694,
+      "RMSLE": 0.31296434987862454,
+      "arboles": 1219
+    },
+    {
+      "modelo": "K: J con 50 % y árboles recalculados",
+      "MAE": 3.918024653311591,
+      "RMSLE": 0.312452141786462,
+      "arboles": 1710,
+      "segundos_entrenamiento": 321.6
+    }
+  ]
+}

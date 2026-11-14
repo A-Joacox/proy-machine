@@ -1,0 +1,32 @@
+{
+  "modelo": "LightGBM",
+  "params": {
+    "objective": "regression_l1",
+    "learning_rate": 0.05,
+    "num_leaves": 281,
+    "min_child_samples": 30,
+    "subsample": 0.78,
+    "colsample_bytree": 0.685,
+    "reg_alpha": 5.094,
+    "reg_lambda": 0.3762
+  },
+  "n_estimators": 1710,
+  "params_fijos": {
+    "subsample_freq": 1,
+    "n_jobs": -1,
+    "random_state": 42,
+    "verbose": -1
+  },
+  "target": "log1p(trip_duration_min)",
+  "features_excluidas": [],
+  "sample_frac": 0.5,
+  "seed": 42,
+  "cv_MAE": 3.3587457653507613,
+  "cv_RMSLE": 0.3029249475647775,
+  "val_mayo": {
+    "MAE": 3.918024653311591,
+    "RMSLE": 0.312452141786462
+  },
+  "origen": "params de outputs/mejores_hiperparametros.json (notebook 04); n_estimators recalculado con 50 % en notebook 04b",
+  "validacion": "TimeSeriesSplit(n_splits=3) sobre enero-abril, SAMPLE_FRAC=0.5, SEED=42"
+}

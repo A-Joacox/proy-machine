@@ -47,8 +47,11 @@ proy-machine/
 │   ├── 01_exploracion_inicial.ipynb
 │   ├── 02_baselines_6meses.ipynb   # baselines + Ridge/Lasso -> outputs/metrics_6meses.json
 │   ├── 03_modelos_arboles.ipynb    # Random Forest, HistGB, LightGBM -> outputs/metrics_arboles.json
-│   └── 04_busqueda_hiperparametros.ipynb  # búsqueda con TimeSeriesSplit -> outputs/metrics_tuning.json,
-│                                          #   outputs/mejores_hiperparametros.json (tarda ~50 min)
+│   ├── 04_busqueda_hiperparametros.ipynb  # búsqueda con TimeSeriesSplit -> outputs/metrics_tuning.json,
+│   │                                      #   outputs/mejores_hiperparametros.json (tarda ~50 min)
+│   └── 04b_tamano_muestra.ipynb    # efecto de usar 10/20/50 % de cada mes, chequeo de HistGB y
+│                                   #   árboles con 50 % -> outputs/config_modelo_final.json
+│                                   #   (tarda ~40 min, ~8 GB de RAM)
 ├── src/
 │   ├── data.py            # descarga, limpieza y split temporal
 │   ├── features.py        # features y preprocesador sin leakage
