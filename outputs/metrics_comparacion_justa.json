@@ -1,0 +1,17 @@
+[
+  {
+    "modelo": "L: LightGBM final",
+    "MAE": 3.6939723481428084,
+    "RMSLE": 0.3066455093265517
+  },
+  {
+    "modelo": "B: mediana por zona y hora",
+    "MAE": 7.4754750740392435,
+    "RMSLE": 0.5695280014978856
+  },
+  {
+    "modelo": "A: mediana global",
+    "MAE": 8.962431907653809,
+    "RMSLE": 0.6550727457315847
+  }
+]
