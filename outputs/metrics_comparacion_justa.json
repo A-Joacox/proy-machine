@@ -5,6 +5,31 @@
     "RMSLE": 0.3066455093265517
   },
   {
+    "modelo": "G: HistGradientBoosting",
+    "MAE": 3.811809362959226,
+    "RMSLE": 0.31213565494999557
+  },
+  {
+    "modelo": "F: Random Forest",
+    "MAE": 3.9315541681868593,
+    "RMSLE": 0.3174924906245525
+  },
+  {
+    "modelo": "D: Ridge (regularizada, alpha=1.0)",
+    "MAE": 4.994902408864896,
+    "RMSLE": 0.39565899928563353
+  },
+  {
+    "modelo": "C: Regresión lineal (sin regularizar)",
+    "MAE": 4.994905138918115,
+    "RMSLE": 0.3956593134155987
+  },
+  {
+    "modelo": "E: Lasso (regularizada, alpha=0.01)",
+    "MAE": 5.0289988973478135,
+    "RMSLE": 0.3968444668265848
+  },
+  {
     "modelo": "B: mediana por zona y hora",
     "MAE": 7.4754750740392435,
     "RMSLE": 0.5695280014978856
