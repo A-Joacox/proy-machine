@@ -1,4 +1,4 @@
-# Semana 13 — trabajo nuevo desde la semana 12
+# Semana 13 
 
 ## Archivos de código
 
