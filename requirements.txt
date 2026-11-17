@@ -7,3 +7,4 @@ seaborn>=0.13
 jupyter
 certifi
 lightgbm>=4.0
+shap>=0.45
