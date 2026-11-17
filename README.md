@@ -83,7 +83,7 @@ y discusión de sesgos y limitaciones.
 
 - [Notebook ejecutado](notebooks/06_interpretabilidad.ipynb)
 - [Código del análisis](src/interpretabilidad.py)
-- [Dependencias](requirements_semana13.txt)
+- [Dependencias](requirements.txt)
 - [Informe de resultados](reports/semana13/informe_semana13.md)
 - [Tablas y metadatos](outputs/semana13/)
 - [Figuras](reports/semana13/figures/)
@@ -93,7 +93,7 @@ y discusión de sesgos y limitaciones.
 1. Abrir el notebook mediante el enlace de abajo.
 2. Guardar una copia en Google Drive y seleccionar un entorno CPU.
 3. Ejecutar las secciones en orden. La sección 2 instala las
-   dependencias de requirements_semana13.txt.
+   dependencias de requirements.txt.
 4. Si Colab solicita reiniciar la sesión tras la instalación,
    reiniciarla y volver a ejecutar desde la sección 1.
 5. Autorizar el acceso a Drive en la sección 4.
@@ -106,8 +106,7 @@ y discusión de sesgos y limitaciones.
 
 [Abrir en Google Colab](https://colab.research.google.com/github/A-Joacox/proy-machine/blob/main/notebooks/06_interpretabilidad.ipynb)
 
-El notebook descarga internamente el código de la rama semana-13.
-Esta rama debe conservarse mientras el notebook siga configurado así.
+El notebook descarga el código de la rama main.
 
 ### Modelo guardado y recuperación
 
