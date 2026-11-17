@@ -67,3 +67,16 @@ NYC Taxi & Limousine Commission — Trip Record Data
 https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
 Datos públicos, formato Parquet, periodo usado: enero-junio 2025.
+
+
+## Semana 13: interpretabilidad y limitaciones
+
+- [Instrucciones de ejecución](README_SEMANA13.md)
+- [Notebook ejecutado](notebooks/06_interpretabilidad.ipynb)
+- [Informe de resultados](reports/semana13/informe_semana13.md)
+- [Tablas y metadatos](outputs/semana13/)
+- [Figuras](reports/semana13/figures/)
+
+El modelo reconstruido reproduce las métricas de la semana 12:
+MAE = 3.693972 min y RMSLE = 0.306646.
+El análisis SHAP utiliza 2000 viajes de junio y 41 variables transformadas.
