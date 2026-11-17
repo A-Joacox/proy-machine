@@ -71,12 +71,82 @@ Datos públicos, formato Parquet, periodo usado: enero-junio 2025.
 
 ## Semana 13: interpretabilidad y limitaciones
 
-- [Instrucciones de ejecución](README_SEMANA13.md)
+La ejecución de la semana 13 está completada. El modelo reconstruido
+reproduce las métricas de la semana 12: MAE = 3.693972 min y
+RMSLE = 0.306646.
+
+El análisis incluye importancia de variables, SHAP sobre 2000 viajes
+de junio y 41 variables transformadas, explicaciones individuales
+y discusión de sesgos y limitaciones.
+
+### Archivos y resultados
+
 - [Notebook ejecutado](notebooks/06_interpretabilidad.ipynb)
+- [Código del análisis](src/interpretabilidad.py)
+- [Dependencias](requirements_semana13.txt)
 - [Informe de resultados](reports/semana13/informe_semana13.md)
 - [Tablas y metadatos](outputs/semana13/)
 - [Figuras](reports/semana13/figures/)
 
-El modelo reconstruido reproduce las métricas de la semana 12:
-MAE = 3.693972 min y RMSLE = 0.306646.
-El análisis SHAP utiliza 2000 viajes de junio y 41 variables transformadas.
+### Ejecución en Google Colab
+
+1. Abrir el notebook mediante el enlace de abajo.
+2. Guardar una copia en Google Drive y seleccionar un entorno CPU.
+3. Ejecutar las secciones en orden. La sección 2 instala las
+   dependencias de requirements_semana13.txt.
+4. Si Colab solicita reiniciar la sesión tras la instalación,
+   reiniciarla y volver a ejecutar desde la sección 1.
+5. Autorizar el acceso a Drive en la sección 4.
+6. Ejecutar la sección 5 para cargar el modelo guardado o reconstruirlo
+   si todavía no existe.
+7. Ejecutar la sección 6 para verificar las métricas de junio.
+   Si falla la comprobación, revisar la causa antes de continuar.
+8. Ejecutar las secciones 7–10 para generar y descargar los análisis,
+   las figuras y el informe.
+
+[Abrir en Google Colab](https://colab.research.google.com/github/A-Joacox/proy-machine/blob/main/notebooks/06_interpretabilidad.ipynb)
+
+El notebook descarga internamente el código de la rama semana-13.
+Esta rama debe conservarse mientras el notebook siga configurado así.
+
+### Modelo guardado y recuperación
+
+El modelo y el preprocesador se guardan en el Drive de quien ejecuta
+el notebook, dentro de:
+
+`MyDrive/ML_NYC_semana13_desde_semana12/modelo/`
+
+La sección 5 reutiliza el checkpoint cuando coincide con el código
+y las versiones registradas. Si no existe, realiza el entrenamiento.
+El guardado ocurre al terminar: una interrupción anterior obliga
+a repetirlo.
+
+Los resultados se respaldan en:
+
+`MyDrive/ML_NYC_semana13_desde_semana12/resultados/`
+
+Guardar el notebook en Drive y guardar el modelo son operaciones
+distintas. El notebook contiene el código y sus salidas; el checkpoint
+contiene el modelo y el preprocesador entrenados.
+
+### Metodología
+
+- Entrenamiento: 9,319,633 viajes de enero–mayo de 2025.
+- Evaluación: 2,008,054 viajes de junio de 2025.
+- Muestreo: 50 % por mes, con semilla 42.
+- Modelo: LightGBM con la configuración final y 1710 árboles.
+- Preprocesamiento por bloques en float64, conservando el
+  cross-fitting de TargetEncoder.
+- SHAP: muestra aleatoria de 2000 viajes, semilla 42 y método
+  tree_path_dependent.
+- Las contribuciones SHAP explican log(1 + duración), no minutos
+  directamente, y no demuestran causalidad.
+- Las métricas por segmento incluyen tamaño, MAE, error firmado
+  y proporción de subestimaciones.
+
+La configuración, las versiones y los hashes se registran en
+`outputs/semana13/`. Los datos originales se descargan desde
+la fuente oficial mediante el código del proyecto.
+
+Los resultados generados en Colab deben subirse a GitHub por separado.
+No se deben incluir los Parquet crudos ni el checkpoint del modelo.
