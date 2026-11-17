@@ -1,0 +1,26 @@
+{
+  "reconstruccion": {
+    "MAE": 3.6939723481428084,
+    "RMSLE": 0.3066455093265517
+  },
+  "semana12": {
+    "modelo": "L: LightGBM final (config 04b, train ene-may, test junio)",
+    "MAE": 3.6939723481428084,
+    "RMSLE": 0.3066455093265517,
+    "n_train": 9319633,
+    "n_test": 2008054
+  },
+  "diferencias": {
+    "MAE": 0.0,
+    "RMSLE": 0.0
+  },
+  "tolerancias_reproduccion": {
+    "MAE": 0.02,
+    "RMSLE": 0.002
+  },
+  "archivo_test": {
+    "archivo": "yellow_tripdata_2025-06.parquet",
+    "sha256": "1bea7f5b09c744414451fa7fef09fbc5a393ffb1621c859be6ba0df23a14e1b6"
+  },
+  "compatible": true
+}

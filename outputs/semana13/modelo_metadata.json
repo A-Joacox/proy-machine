@@ -1,0 +1,127 @@
+{
+  "config": {
+    "modelo": "LightGBM",
+    "params": {
+      "objective": "regression_l1",
+      "learning_rate": 0.05,
+      "num_leaves": 281,
+      "min_child_samples": 30,
+      "subsample": 0.78,
+      "colsample_bytree": 0.685,
+      "reg_alpha": 5.094,
+      "reg_lambda": 0.3762
+    },
+    "n_estimators": 1710,
+    "params_fijos": {
+      "subsample_freq": 1,
+      "n_jobs": -1,
+      "random_state": 42,
+      "verbose": -1
+    },
+    "target": "log1p(trip_duration_min)",
+    "features_excluidas": [],
+    "sample_frac": 0.5,
+    "seed": 42,
+    "cv_MAE": 3.3587457653507613,
+    "cv_RMSLE": 0.3029249475647775,
+    "val_mayo": {
+      "MAE": 3.918024653311591,
+      "RMSLE": 0.312452141786462
+    },
+    "origen": "params de outputs/mejores_hiperparametros.json (notebook 04); n_estimators recalculado con 50 % en notebook 04b",
+    "validacion": "TimeSeriesSplit(n_splits=3) sobre enero-abril, SAMPLE_FRAC=0.5, SEED=42"
+  },
+  "versiones": {
+    "python": "3.13.18",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "lightgbm": "4.7.0",
+    "pyarrow": "26.0.1",
+    "shap": "0.54.1",
+    "joblib": "1.5.3"
+  },
+  "codigo_sha256": {
+    "src/data.py": "4259180c087d865ebd2c803e21ad0f5add97b8bea434bd19b56a1152b7d64ab4",
+    "src/features.py": "e1045f83b0d2a5fb0fbc4ea95879761d4d9bd7e179d9e3a8bd6b92ab526a85fd",
+    "src/interpretabilidad.py": "93dbc6645ab48d4333043148becd3b1d2b260b5abde6f856699d58936dc6460c",
+    "outputs/config_modelo_final.json": "9ed5e35043515ae318c7aa6bce36126bfca206d67119f8e3b1436526822510a3"
+  },
+  "n_train": 9319633,
+  "filas_por_mes": {
+    "1": 1648803,
+    "2": 1697281,
+    "3": 1962254,
+    "4": 1872766,
+    "5": 2138529
+  },
+  "archivos_train": [
+    {
+      "archivo": "yellow_tripdata_2025-01.parquet",
+      "sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a"
+    },
+    {
+      "archivo": "yellow_tripdata_2025-02.parquet",
+      "sha256": "037cba555a73663f3a51a2c27816e40e3feb364769942bdf122b9da31e377bd3"
+    },
+    {
+      "archivo": "yellow_tripdata_2025-03.parquet",
+      "sha256": "20c4b77cce457b7cfdae77c5069ca7dc91c167f876a41467f4502ab69487a186"
+    },
+    {
+      "archivo": "yellow_tripdata_2025-04.parquet",
+      "sha256": "6f98938de9380a3f85600533816f0dc0e6d9b5b210e485d623952bac599bbe28"
+    },
+    {
+      "archivo": "yellow_tripdata_2025-05.parquet",
+      "sha256": "7ef46bcd0fceee7f8c0bb38a532be05bceefabb512d4bb0b32a7727dd862b15c"
+    }
+  ],
+  "dtype_entrenamiento": "float64",
+  "feature_names": [
+    "num__pickup_hour",
+    "num__pickup_dayofweek",
+    "num__pickup_month",
+    "num__es_fin_de_semana",
+    "num__es_feriado",
+    "num__es_hora_punta",
+    "num__hora_sin",
+    "num__hora_cos",
+    "num__dia_sin",
+    "num__dia_cos",
+    "num__misma_zona",
+    "num__mismo_borough",
+    "num__es_aeropuerto_origen",
+    "num__es_aeropuerto_destino",
+    "num__viaje_aeropuerto",
+    "num__distancia_estimada_mi",
+    "num__log_distancia_estimada",
+    "target_enc__PULocationID",
+    "target_enc__DOLocationID",
+    "onehot__pu_borough_Bronx",
+    "onehot__pu_borough_Brooklyn",
+    "onehot__pu_borough_EWR",
+    "onehot__pu_borough_Manhattan",
+    "onehot__pu_borough_Queens",
+    "onehot__pu_borough_Staten Island",
+    "onehot__do_borough_Bronx",
+    "onehot__do_borough_Brooklyn",
+    "onehot__do_borough_EWR",
+    "onehot__do_borough_Manhattan",
+    "onehot__do_borough_Queens",
+    "onehot__do_borough_Staten Island",
+    "onehot__passenger_cat_0",
+    "onehot__passenger_cat_1",
+    "onehot__passenger_cat_2",
+    "onehot__passenger_cat_3",
+    "onehot__passenger_cat_4",
+    "onehot__passenger_cat_5+",
+    "onehot__passenger_cat_desconocido",
+    "onehot__VendorID_1",
+    "onehot__VendorID_2",
+    "onehot__VendorID_6"
+  ],
+  "modelo_sha256": "f1359d645f1401dbfe130f0359d63cf89f89f3f29ba274d991c164d5ebe824ed",
+  "segundos_entrenamiento": 1656.702059444,
+  "nota": "Reconstrucción; versiones y hashes de la ejecución original de semana 12 no estaban archivados."
+}
