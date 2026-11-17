@@ -9,7 +9,6 @@
 | `requirements_semana13.txt` | Versiones comprobadas para esta ejecución. |
 | `README_SEMANA13.md` | Instrucciones y alcance. |
 
-No se leen ni reutilizan las imágenes, el JSON ni el notebook de la semana 13 descartada.
 Los resultados nuevos se generan en `outputs/semana13/` y `reports/semana13/`.
 
 ## Subir a GitHub
