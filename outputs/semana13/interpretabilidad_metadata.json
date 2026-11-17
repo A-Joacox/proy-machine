@@ -1,0 +1,47 @@
+{
+  "n_shap": 2000,
+  "seed": 42,
+  "seleccion": "Aleatoria simple sin reemplazo sobre el test junio al 50%",
+  "escala": "log1p(trip_duration_min)",
+  "feature_perturbation": "tree_path_dependent",
+  "base_log1p": 2.628004209824318,
+  "base_transformada_min": 12.846108380937416,
+  "nota_base": "La base transformada no es la duración media en minutos.",
+  "error_max_aditividad": 7.549516567451064e-14,
+  "casos": [
+    {
+      "criterio": "menor_error",
+      "posicion_test": 1342885,
+      "fila_archivo": 1741025,
+      "real_min": 22.866666793823242,
+      "pred_min": 22.867184921451383,
+      "error_firmado": 0.0005181276281405189
+    },
+    {
+      "criterio": "error_mediano",
+      "posicion_test": 1417339,
+      "fila_archivo": 3724593,
+      "real_min": 15.316666603088379,
+      "pred_min": 12.758038699212273,
+      "error_firmado": -2.558627903876106
+    },
+    {
+      "criterio": "mayor_error",
+      "posicion_test": 1310628,
+      "fila_archivo": 3439373,
+      "real_min": 55.53333282470703,
+      "pred_min": 13.758368795417255,
+      "error_firmado": -41.77496402928978
+    }
+  ],
+  "versiones": {
+    "python": "3.13.18",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "lightgbm": "4.7.0",
+    "pyarrow": "26.0.1",
+    "shap": "0.54.1",
+    "joblib": "1.5.3"
+  }
+}
