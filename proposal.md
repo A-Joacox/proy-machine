@@ -55,7 +55,7 @@ Este dataset tiene leakage evidente si se usa sin criterio. Las siguientes colum
 | `congestion_surcharge`, `cbd_congestion_fee`, `improvement_surcharge`, `Airport_fee` | Recargos calculados al cerrar el viaje según el recorrido efectivo |
 | `store_and_fwd_flag` | Indica si el registro se guardó offline; se fija al terminar el viaje |
 
-En lugar de `trip_distance`, construimos una distancia estimada (haversine entre centroides de las 265 zonas TLC), que sí estaría disponible al momento del recojo.
+En lugar de `trip_distance`, construimos una distancia estimada (se utiliza la mediana histórica de distancia por ruta, calculada únicamente con los datos de entrenamiento. Cuando una ruta no tiene información, se utiliza la mediana por origen y, como último respaldo, la mediana global.), que sí estaría disponible al momento del recojo.
 
 **Medidas de control:**
 - Lista blanca explícita de features (sección 7); toda columna fuera de esa lista se descarta en `src/features.py`, no se excluye "a mano" en cada notebook.
