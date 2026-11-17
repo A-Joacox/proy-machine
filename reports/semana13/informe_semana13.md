@@ -2,8 +2,7 @@
 
 ## Alcance y procedencia
 
-Análisis nuevo desde la configuración de semana 12. No se leen ni reutilizan las
-figuras o estadísticas del notebook 06 eliminado. Se usan registros reales de NYC
+Análisis nuevo desde la configuración de semana 12. Se usan registros reales de NYC
 Yellow Taxi (enero-junio de 2025), la limpieza de `src/data.py` y las variables de
 `src/features.py`. Entrenamiento: 9,319,633 viajes de enero-mayo;
 test: 2,008,054 de junio. Ambos conservan el muestreo mensual
@@ -149,7 +148,7 @@ datos faltantes. No se afirma una relación con `payment_type`, que no se analiz
 
 ## Evidencia y reproducción
 
-Ejecutar `notebooks/06_interpretabilidad.ipynb` con `requirements_semana13.txt`.
+Ejecutar `notebooks/06_interpretabilidad.ipynb` con `requirements.txt`.
 Los resultados de esta ejecución están en `outputs/semana13/` y las figuras en
 `reports/semana13/figures/`. El modelo y el preprocesador se guardan en el directorio
 de Drive indicado por el notebook. El archivo `modelo_metadata.json` registra
