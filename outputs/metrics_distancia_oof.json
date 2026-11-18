@@ -1,0 +1,30 @@
+{
+  "resultados_mayo": [
+    {
+      "modelo": "K: configuración final (control)",
+      "MAE": 3.918024653311591,
+      "RMSLE": 0.312452141786462,
+      "segundos": 351.0
+    },
+    {
+      "modelo": "K con distancia fuera de fold",
+      "MAE": 3.9081022968472583,
+      "RMSLE": 0.31141919161548526,
+      "segundos": 355.3
+    }
+  ],
+  "diagnostico_distancia": [
+    {
+      "conjunto": "train, dentro de fold",
+      "corr_con_trip_distance": 0.9738306508754822
+    },
+    {
+      "conjunto": "train, fuera de fold",
+      "corr_con_trip_distance": 0.9674643475823047
+    },
+    {
+      "conjunto": "validación (mayo)",
+      "corr_con_trip_distance": 0.9639347143258875
+    }
+  ]
+}
