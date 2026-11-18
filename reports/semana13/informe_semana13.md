@@ -82,6 +82,95 @@ representativa adicional ni evidencia de un sesgo sistemático.
 Las figuras waterfall muestran contribuciones en log1p. Los errores residuales
 no permiten atribuir el resultado a congestión, clima o incidentes no observados.
 
+## Interpretación de las figuras
+
+Sección redactada a partir de las figuras de `reports/semana13/figures/` y de las
+tablas de `outputs/semana13/`. No la genera el notebook: si se regenera el informe,
+hay que conservarla. Todas las contribuciones están en escala log1p; como referencia,
++0.10 equivale a multiplicar la duración predicha por ≈1.11 y −0.20, por ≈0.82.
+
+### Distribución de los valores SHAP (`03_shap_distribucion.png`)
+
+- **La distancia estimada define el orden de magnitud del viaje.** Sus
+  contribuciones van de −0.7 a +1.1 (y de −0.3 a +0.5 en su versión logarítmica):
+  valores bajos (azul) restan y valores altos (rojo) suman. Las demás variables se
+  mueven aproximadamente entre −0.25 y +0.3.
+- **Hora del día.** `hora_cos` alta (horas cercanas a la medianoche) resta y baja
+  (horas cercanas al mediodía) suma; `pickup_hour` y `hora_sin` reparten el resto
+  del mismo efecto. Las tres codifican la misma información y deben leerse juntas.
+- **Zonas de origen y destino.** Las codificaciones de zona tienen contribuciones de
+  ambos signos sin un patrón de color claro: ajustan cada viaje según la zona,
+  después de considerar la distancia.
+- **Fin de semana.** `es_fin_de_semana = 1` resta (hasta ≈−0.12): con la misma
+  ruta y hora, el modelo predice viajes algo más cortos en sábado y domingo.
+- **`pickup_month`.** En la muestra de junio casi todas las contribuciones son
+  positivas (hasta ≈+0.13). Como junio no estuvo en entrenamiento, el modelo le
+  aplica el efecto aprendido para los meses más recientes; no es una tendencia
+  estimada para junio.
+- **`passenger_cat_desconocido = 1` suma** (hasta ≈+0.12). No mide el número de
+  pasajeros: en el archivo crudo de junio, los registros sin `passenger_count`
+  (28 %) coinciden exactamente con los de `payment_type = 0`, un bloque de registros
+  reportados sin esos metadatos. La variable funciona como indicador de ese tipo de
+  registro.
+- **`mismo_borough = 0` suma**: los viajes entre boroughs distintos se predicen más
+  largos que los viajes de igual distancia estimada dentro de un mismo borough.
+
+### Dependencia de la distancia (`04_dependencia_distancia.png`)
+
+La relación es creciente y cóncava. Entre ≈0.5 y ≈3 millas la contribución sube de
+−0.7 a +0.3; desde ahí crece más despacio (≈+0.5 a 7 millas y ≈+1.0 entre 18 y 26
+millas). Cada milla adicional agrega menos duración en viajes largos, lo que es
+compatible con mayor velocidad media en trayectos largos (autopistas, puentes). Esta
+figura muestra solo `distancia_estimada_mi`; `log_distancia_estimada` agrega su
+propia contribución en la misma dirección.
+
+El color (hora de recojo) aparece mezclado a lo largo de la curva: para una misma
+distancia, la contribución no cambia de forma visible según la hora. El modelo trata
+distancia y hora de forma aproximadamente aditiva; la hora actúa sobre todo a través
+de sus propias variables. Esto no descarta interacciones pequeñas, que requerirían
+valores SHAP de interacción.
+
+### Dependencia de la hora (`05_dependencia_hora.png`)
+
+- La contribución de `pickup_hour` es negativa de madrugada (mínima entre las 2 y
+  las 6 h, entre −0.10 y −0.25) y positiva entre las 10 y las 17 h (máxima a las
+  15-16 h, ≈+0.05 a +0.12). Desde las 18 h vuelve a bajar.
+- **Fin de semana (rojo) frente a días hábiles (azul):** entre las 0 y las 2 h la
+  contribución es menos negativa en fin de semana; a las 8-9 h es más baja, porque
+  no hay hora punta matutina; y entre las 18 y las 23 h queda levemente por encima.
+  Es compatible con más actividad nocturna y menos tráfico de mañana los fines de
+  semana.
+- Es solo la parte del efecto asignada a `pickup_hour`; el efecto completo de la
+  hora suma también `hora_sin`, `hora_cos` y `es_hora_punta`.
+
+### Casos individuales (`06_caso_*.png`)
+
+Rutas y distancias reales obtenidas de las filas indicadas en `casos_locales.csv`
+(`fila_archivo`) dentro de `yellow_tripdata_2025-06.parquet`. La distancia real
+(`trip_distance`) se usa solo para describir el caso; no es una variable del modelo.
+
+| caso | ruta | recojo | distancia estimada | distancia real | real | predicción |
+| --- | --- | --- | --- | --- | --- | --- |
+| menor error | East Chelsea → Upper West Side North | mar 17-jun, 17:54 | 3.66 mi | 4.30 mi | 22.9 min | 22.9 min |
+| error mediano | Financial District North → UN/Turtle Bay South | dom 15-jun, 22:36 | 4.75 mi | 5.33 mi | 15.3 min | 12.8 min |
+| mayor error | Sutton Place/Turtle Bay North → Central Park | dom 8-jun, 15:30 | 1.77 mi | 3.32 mi | 55.5 min | 13.8 min |
+
+- **Menor error.** La distancia suma +0.43 (entre sus dos versiones) y la hora punta
+  de la tarde +0.12 (`pickup_hour` y `hora_cos`). El destino resta −0.09. Es un caso
+  típico: ruta frecuente de Manhattan en día hábil, donde la mediana histórica
+  describe bien el viaje.
+- **Error mediano.** La distancia suma +0.37, pero las zonas de origen y destino
+  restan −0.23, la hora nocturna −0.10 (`hora_cos` y `pickup_hour`) y el domingo
+  −0.04. El modelo predice 12.8 min y el
+  viaje duró 15.3: la distancia real superó a la estimada en 0.6 millas.
+- **Mayor error.** La distancia estimada es corta (1.77 mi) y casi no mueve la
+  predicción (−0.03). La hora de la tarde suma +0.12 y el domingo resta ≈−0.19
+  (`pickup_dayofweek`, `dia_sin`, `es_fin_de_semana`, `dia_cos`). El modelo predice
+  13.8 min, coherente con lo que sabe al recojo. El viaje real recorrió 3.32 millas,
+  casi el doble de la mediana de la ruta, a una velocidad media de 3.6 mph: indica un
+  desvío o detenciones prolongadas que ninguna variable disponible al recojo puede
+  anticipar. Es el tipo de error que explica la limitación principal del modelo.
+
 ## Cobertura geográfica y errores
 
 Estas tablas se calculan sobre todo el test de junio, no solo la muestra SHAP.
@@ -118,7 +207,9 @@ no interpretar grupos pequeños como evidencia concluyente.
 
 Las diferencias entre estos grupos son descriptivas y pueden reflejar diferencias
 en rutas, horarios o duración. No prueban discriminación causal ni la causa de los
-datos faltantes. No se afirma una relación con `payment_type`, que no se analiza aquí.
+datos faltantes. Lo que sí se verificó es su origen: en el archivo crudo de junio,
+los registros sin `passenger_count` coinciden exactamente con los de
+`payment_type = 0` (ver "Interpretación de las figuras").
 
 ## Limitaciones y riesgos de uso
 
@@ -155,5 +246,6 @@ de Drive indicado por el notebook. El archivo `modelo_metadata.json` registra
 configuración, versiones y hashes. Las tablas completas están en
 `importancias.csv`, `errores_segmentos.csv` y `casos_locales.csv`.
 
-La redacción interpretativa adicional deberá contrastarse con las figuras nuevas;
-no se trasladan conclusiones numéricas de la ejecución descartada.
+La interpretación de las figuras está en la sección "Interpretación de las figuras",
+contrastada con las figuras y tablas de esta ejecución. No se trasladan conclusiones
+numéricas de la ejecución descartada.
